@@ -34,6 +34,8 @@ jQuery.widgets = {
     tabCounter:0,
     init: function(options){
         _self = this;
+        ip = options.ip;
+
         $('.errors').hide();
 
         $('#widgets-area').tabs({
