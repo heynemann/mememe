@@ -1,5 +1,5 @@
 # Django settings for mememe project.
-import os
+from os.path import dirname, abspath, join
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,6 +9,8 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+LOCAL_FILE = lambda *x: join(abspath(dirname(__file__)), *x)
 
 DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'db'           # Or path to database file if using sqlite3.
@@ -46,7 +48,7 @@ MEDIA_URL = ''
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/'
+ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '6b2+^_2b1$)pv49+r68c$o23om_+o)-1m0fto%f3mom$cf7epy'
@@ -76,8 +78,5 @@ INSTALLED_APPS = (
     'engine',
 )
 
-INSTANCE_FILE = lambda x: \
-    os.path.abspath(os.path.join(os.path.dirname(__file__), x))
-
 PLUGINS_DIRECTORY = \
-    INSTANCE_FILE('engine/plugins')
+    LOCAL_FILE('engine/plugins')

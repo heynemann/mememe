@@ -1,10 +1,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
 	<title>MemeME - What is happening near to me?</title>
-	<script type="text/javascript">
-	    $.widgets.init({
-		ip: '{{ ip }}',
-		availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}]
+       <script type="text/javascript" src="/media/js/jquery.js"></script>
+       <script type="text/javascript" src="/media/js/jquery.ui.js"></script>
+       <script type="text/javascript" src="/media/js/widgets-core.js"></script>
+       <link type="text/css" href="/media/css/main.css" rel="stylesheet" />
+       <script type="text/javascript">
+	    $(function() {
+		$("#accordion").accordion({
+                    collapsible: true
+		});
+		$.widgets.init({
+                    ip: '{{ ip }}',
+		    availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}]
+		});
 	    });
 	</script>
     </head>
