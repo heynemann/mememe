@@ -16,7 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from django.shortcuts import render_to_response
+from engine.models import Plugin
 
 def index(request):
     ip = request.META['REMOTE_ADDR']
-    return render_to_response("index.html", {'ip': ip})
+    return render_to_response("index.html", {'ip': ip, 'plugins': Plugin.fetch_all()})

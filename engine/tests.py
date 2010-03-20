@@ -107,12 +107,14 @@ class ViewTests(TestCase):
         assert_equals(response.context['ip'], '127.0.0.1')
         assert_equals(ip_address, '127.0.0.1')
 
-    def _test_index_passes_plugins_data_to_template(self):
+    def test_index_passes_plugins_data_to_template(self):
         "The index passes plugins data to template"
         client = Client()
-
         response = client.get(reverse("index"))
-        ip_address = re.search("ip: '(?P<ip>[^']+)'", response.content).group("ip")
 
-        assert_equals(response.context['ip'], '127.0.0.1')
-        assert_equals(ip_address, '127.0.0.1')
+        got_json = re.search("availableWidgets: (?P<json>[[].*[]])", response.content).group("json")
+        got_dict = simplejson.loads(got_json)
+
+        expected_list = [p.to_dict() for p in Plugin.fetch_all()]
+        assert 'plugins' in response.context, "The template context of view index should have a list of plugins"
+        assert_equals(got_dict, expected_list)
