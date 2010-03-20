@@ -31,6 +31,14 @@ class Plugin(object):
     html_url = None
     slug = None
 
+    def to_dict(self):
+        d = {
+            'name': self.name,
+            'description': self.description,
+            'url': self.slug
+        }
+        return d
+
     @classmethod
     def fetch_all(cls):
         plugins = []

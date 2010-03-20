@@ -48,7 +48,7 @@ class ModelTests(TestCase):
         assert_equals(plugins[0].html_url,
                       reverse('plugins-url', kwargs={'path': 'test.html'}))
 
-    def _test_plugin_model_to_dict(self):
+    def test_plugin_model_to_dict(self):
         "Plugin().to_dict() gives a nice dictionary"
 
         plugins = Plugin.fetch_all()
@@ -57,7 +57,7 @@ class ModelTests(TestCase):
         my_dict = {
             'name': 'Test plugin',
             'description': "My first test plugin",
-            'slug': 'test'
+            'url': 'test'
         }
         assert_equals(plugin.to_dict(), my_dict)
 
