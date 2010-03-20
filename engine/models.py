@@ -15,14 +15,14 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-from django.db import models
-from django.conf import settings
-from django.core.urlresolvers import reverse
+import os
 
 from glob import glob
 from ConfigParser import ConfigParser
-import os
+
+from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.utils import simplejson
 
 class Plugin(object):
     name = None
@@ -38,6 +38,9 @@ class Plugin(object):
             'url': self.slug
         }
         return d
+
+    def to_json(self):
+        return simplejson.dumps(self.to_dict())
 
     @classmethod
     def fetch_all(cls):

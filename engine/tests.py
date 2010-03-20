@@ -25,7 +25,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from nose.tools import assert_equals
 from django.test.client import Client
-
+from django.utils import simplejson
 
 class ModelTests(TestCase):
 
@@ -60,6 +60,19 @@ class ModelTests(TestCase):
             'url': 'test'
         }
         assert_equals(plugin.to_dict(), my_dict)
+
+    def test_plugin_model_to_json(self):
+        "Plugin().to_json() gives a nice json"
+
+        plugins = Plugin.fetch_all()
+        plugin = plugins[0]
+
+        my_json = simplejson.dumps({
+            'name': 'Test plugin',
+            'description': "My first test plugin",
+            'url': 'test'
+        })
+        assert_equals(plugin.to_json(), my_json)
 
     def test_can_serve_static_files_properly(self):
         "Plugin files are being served properlu"
