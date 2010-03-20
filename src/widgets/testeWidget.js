@@ -1,5 +1,5 @@
 jQuery.testeWidget = {
     add:function(container){
-        $('#bla', container).html('changed!');
+        $('#bla', container).load('widgets/readme.txt');
     }
 }
