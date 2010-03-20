@@ -34,10 +34,12 @@ jQuery.widgets = {
     tabCounter:0,
     init: function(options){
         _self = this;
+        ip = options.ip;
+
         $('.errors').hide();
 
         $('#widgets-area').tabs({
-            tabTemplate: '<li><a href="#{href}">#{label}</a></li>',
+            tabTemplate: '<li><a href="#{href}" style="float:left;">#{label}</a><span id="close-#{href}" class="ui-icon ui-icon-close" style="float:left; margin: 10px 10px 0px -12px;">Remove Tab</span></li>',
             add: function(event, ui) {
                 $(ui.panel).append('<div>Loading...</p>');
             }
@@ -46,10 +48,11 @@ jQuery.widgets = {
         _self.bindAvailableWidgets(options.availableWidgets);
     },
     bindAvailableWidgets: function(availableWidgets){
+        var _self = this;
         $.each(availableWidgets, function(item){
             var widget = this;
 
-            var $widget = $('<li><a href="' + widget.url + '" alt="' + widget.description + '" title="' + widget.description + '" class="widget">' + widget.name + '</a></li>');
+            var $widget = $('<li><a  href="' + widget.url + '" alt="' + widget.description + '" title="' + widget.description + '" class="widget">' + widget.name + '</a></li>');
             $('div.available-widgets').find('div.widgets').find('ul').append($widget);
 
             $("a.widget", $widget).click(function(){
@@ -72,19 +75,25 @@ jQuery.widgets = {
         $.ajax({
             url: htmlUrl,
             success: function(data){
+                $tabs = $('#widgets-area');
                 var $container = $('<div class="widget"></div>');
-
                 $container.append(data);
 
                 var key = '#tabs-' + _self.tabCounter;
-
-                $('#widgets-area').tabs('add', key, widgetName);
-
-                $('#widgets-area').tabs('select', _self.tabCounter);
+                $tabs.tabs('add', key, widgetName);
+                $tabs.tabs('select', _self.tabCounter);
 
                 _self.tabCounter++;
 
                 $(key).html($container);
+
+                $('span.ui-icon.ui-icon-close').unbind('click').bind('click', function(){
+                    var button = $(this);
+                    var tabIndex = $('li',$tabs).index(button.parent());
+
+                    $tabs.tabs('remove', tabIndex);
+                    _self.tabCounter--;
+                });
 
                 $.ajax({
                     url: jsUrl,
