@@ -30,6 +30,9 @@ var geoIp = {
     }
 }
 
+//Para obter mais informacões geográficas
+//http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20google.geocoding%20where%20q%3D%22-23.5333%2C-46.6167%22&format=json&diagnostics=false&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=cbfunc
+
 jQuery.widgets = {
     tabCounter:0,
     init: function(options){
