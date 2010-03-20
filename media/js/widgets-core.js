@@ -55,35 +55,40 @@ jQuery.widgets = {
         $.each(availableWidgets, function(item){
             var widget = this;
 
-            var $widget = $('<li><a  href="' + widget.url + '" alt="' + widget.description + '" title="' + widget.description + '" class="widget">' + widget.name + '</a></li>');
+            var $widget = $('<li>');
+            var $link = $('<a>');
+            $link.attr('js_url', widget.js_url)
+                .attr('html_url', widget.html_url)
+                .attr('href', 'javascript:;')
+                .attr('title', widget.description)
+                .attr('slug', widget.slug)
+                .addClass('widget')
+                .html(widget.name)
+                .appendTo($widget);
+
             $('div.available-widgets').find('div.widgets').find('ul').append($widget);
 
             $("a.widget", $widget).click(function(){
                 $('.errors').hide();
                 var $a = $(this);
-                var url = $a.attr('href');
-
-                _self.loadWidget(url);
-
+                _self.loadWidget($a);
                 return false;
             });
 
         });
     },
-    loadWidget: function(widgetName){
+    loadWidget: function(link){
         var _self = this;
-        var htmlUrl = 'widgets/' + widgetName + '.html';
-        var jsUrl = 'widgets/' + widgetName + '.js';
 
         $.ajax({
-            url: htmlUrl,
+            url: link.attr('html_url'),
             success: function(data){
                 $tabs = $('#widgets-area');
                 var $container = $('<div class="widget"></div>');
                 $container.append(data);
 
                 var key = '#tabs-' + _self.tabCounter;
-                $tabs.tabs('add', key, widgetName);
+                $tabs.tabs('add', key, link.html());
                 $tabs.tabs('select', _self.tabCounter);
 
                 _self.tabCounter++;
@@ -98,11 +103,12 @@ jQuery.widgets = {
                     _self.tabCounter--;
                 });
 
+
                 $.ajax({
-                    url: jsUrl,
+                    url: link.attr('js_url'),
                     dataType: 'script',
                     success: function(data){
-                        var widgetObject = $[widgetName];
+                        var widgetObject = $[link.attr('slug')];
                         widgetObject.add($container, geoIp);
                     }
                 });
