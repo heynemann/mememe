@@ -35,7 +35,9 @@ class Plugin(object):
         d = {
             'name': self.name,
             'description': self.description,
-            'url': self.slug
+            'slug': self.slug,
+            'js_url': self.js_url,
+            'html_url': self.html_url,
         }
         return d
 

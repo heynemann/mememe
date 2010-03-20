@@ -57,7 +57,9 @@ class ModelTests(TestCase):
         my_dict = {
             'name': 'Test plugin',
             'description': "My first test plugin",
-            'url': 'test'
+            'slug': 'test',
+            'js_url': reverse('plugins-url', kwargs={'path': 'test.js'}),
+            'html_url': reverse('plugins-url', kwargs={'path': 'test.html'}),
         }
         assert_equals(plugin.to_dict(), my_dict)
 
@@ -70,7 +72,9 @@ class ModelTests(TestCase):
         my_json = simplejson.dumps({
             'name': 'Test plugin',
             'description': "My first test plugin",
-            'url': 'test'
+            'slug': 'test',
+            'js_url': reverse('plugins-url', kwargs={'path': 'test.js'}),
+            'html_url': reverse('plugins-url', kwargs={'path': 'test.html'}),
         })
         assert_equals(plugin.to_json(), my_json)
 
