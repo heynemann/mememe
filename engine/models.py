@@ -29,21 +29,24 @@ class Plugin(object):
     description = None
     js_url = None
     html_url = None
+    slug = None
 
-    @staticmethod
-    def fetch_all():
+    @classmethod
+    def fetch_all(cls):
         plugins = []
         files = glob(os.path.join(settings.PLUGINS_DIRECTORY, "*.cfg"))
         for i in files:
             fname = os.path.splitext(os.path.basename(i))[0]
-            plugin = Plugin()
+            plugin = cls()
             cfg = ConfigParser()
             cfg.read(os.path.abspath(i))
             plugin.name = cfg.get('Default', 'name')
+            plugin.slug = fname
             plugin.description = cfg.get('Default', 'description')
             plugin.js_url = reverse('plugins-url',
                                     kwargs={'path': '%s.js' % fname})
             plugin.html_url = reverse('plugins-url',
                                       kwargs={'path': '%s.html' % fname})
             plugins.append(plugin)
+
         return plugins

@@ -3,9 +3,8 @@ from django.conf import settings
 
 MEDIA = {'document_root': settings.PLUGINS_DIRECTORY}
 
-urlpatterns = patterns(
-    '',
+urlpatterns = patterns('',
     url(r'plugins/(?P<path>.*)$', 'django.views.static.serve', MEDIA,
         name='plugins-url'),
-
+    url(r'', 'engine.views.index', name='index'),
 )

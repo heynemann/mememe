@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import re
 import os
 from glob import glob
 from engine.models import Plugin
@@ -26,7 +27,7 @@ from nose.tools import assert_equals
 from django.test.client import Client
 
 
-class SimpleTest(TestCase):
+class ModelTests(TestCase):
 
     def setUp(self):
         self.old_plugin_dir = conf.settings.PLUGINS_DIRECTORY
@@ -41,10 +42,24 @@ class SimpleTest(TestCase):
         plugins = Plugin.fetch_all()
         assert_equals(plugins[0].name, "Test plugin")
         assert_equals(plugins[0].description, "My first test plugin")
+        assert_equals(plugins[0].slug, "test")
         assert_equals(plugins[0].js_url,
                       reverse('plugins-url', kwargs={'path': 'test.js'}))
         assert_equals(plugins[0].html_url,
                       reverse('plugins-url', kwargs={'path': 'test.html'}))
+
+    def _test_plugin_model_to_dict(self):
+        "Plugin().to_dict() gives a nice dictionary"
+
+        plugins = Plugin.fetch_all()
+        plugin = plugins[0]
+
+        my_dict = {
+            'name': 'Test plugin',
+            'description': "My first test plugin",
+            'slug': 'test'
+        }
+        assert_equals(plugin.to_dict(), my_dict)
 
     def test_can_serve_static_files_properly(self):
         "Plugin files are being served properlu"
@@ -67,3 +82,24 @@ class SimpleTest(TestCase):
 
         assert_equals(expected_html, got_html.content)
         assert_equals(expected_js, got_js.content)
+
+class ViewTests(TestCase):
+    def test_index_passes_users_ip_to_js_plugin(self):
+        "The index passes user's IP to javascript"
+        client = Client()
+
+        response = client.get(reverse("index"))
+        ip_address = re.search("ip: '(?P<ip>[^']+)'", response.content).group("ip")
+
+        assert_equals(response.context['ip'], '127.0.0.1')
+        assert_equals(ip_address, '127.0.0.1')
+
+    def _test_index_passes_plugins_data_to_template(self):
+        "The index passes plugins data to template"
+        client = Client()
+
+        response = client.get(reverse("index"))
+        ip_address = re.search("ip: '(?P<ip>[^']+)'", response.content).group("ip")
+
+        assert_equals(response.context['ip'], '127.0.0.1')
+        assert_equals(ip_address, '127.0.0.1')
