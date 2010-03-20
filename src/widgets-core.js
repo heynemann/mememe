@@ -3,6 +3,33 @@ errorTemplate += '    <p><span style="float: left; margin-right: 0.3em;" class="
 errorTemplate += '    <strong>Alerta:</strong> {{message}}</p>';
 errorTemplate += '</div>';
 
+var geoIp = {
+    "query":{
+        "count":"1",
+        "created":"2010-03-20T05:33:16Z",
+        "lang":"en-US",
+        "updated":"2010-03-20T05:33:16Z",
+        "uri":"http://query.yahooapis.com/v1/yql?q=select+*+from+ip.location+where+ip%3D%27200.159.32.100%27",
+        "results":{
+            "Response":{
+                "Ip":"200.159.32.100",
+                "Status":"OK",
+                "CountryCode":"BR",
+                "CountryName":"Brazil",
+                "RegionCode":"27",
+                "RegionName":"Sao Paulo",
+                "City":"São Paulo",
+                "ZipPostalCode":null,
+                "Latitude":"-23.5333",
+                "Longitude":"-46.6167",
+                "Timezone":"-3",
+                "Gmtoffset":"-2",
+                "Dstoffset":"-3"
+            }
+        }
+    }
+}
+
 jQuery.widgets = {
     init: function(options){
         _self = this;
@@ -14,7 +41,7 @@ jQuery.widgets = {
         $.each(availableWidgets, function(item){
             var widget = this;
 
-            var $widget = $('<li><a href="' + widget.url + '" alt="' + widget.description + '" class="widget">' + widget.name + '</a></li>');
+            var $widget = $('<li><a href="' + widget.url + '" alt="' + widget.description + '" title="' + widget.description + '" class="widget">' + widget.name + '</a></li>');
             $('div.available-widgets').find('div.widgets').find('ul').append($widget);
 
             $("a.widget", $widget).click(function(){
@@ -47,7 +74,7 @@ jQuery.widgets = {
                     dataType: 'script',
                     success: function(data){
                         var widgetObject = $[widgetName];
-                        widgetObject.add($container);
+                        widgetObject.add($container, geoIp);
                     }
                 });
             },
