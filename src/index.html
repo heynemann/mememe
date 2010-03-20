@@ -1,33 +1,36 @@
 <html>
     <head>
-        <link type="text/css" href="../lib/ui/css/themename/jquery-ui-1.8.custom.css" rel="Stylesheet" />    
+        <link type="text/css" href="../lib/ui/css/ui-lightness/jquery-ui-1.8rc3.custom.css" rel="Stylesheet" />    
         <script type="text/javascript" src="../lib/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="../lib/ui/js/jquery-ui-1.8rc3.custom.min.js"></script>
         <script type="text/javascript" src="widgets-core.js"></script>
         <script type="text/javascript">
             $(function(){
-                $.widgets.init();
+                $.widgets.init({
+                    availableWidgets: [
+                        {
+                            name: 'Widget Teste',
+                            description: 'Primeiro teste de widget. Apenas usando este para testar a infra-estrutura.',
+                            url: 'testeWidget'
+                        }
+                    ]
+                });
             });
         </script>
     </head>
     <body>
-        <div style="width:200px; float:left;">
+        <div class="errors"></div>
+        <div style="width:720px; float:left;">
+            <div id="widgets-area" style="width: 710px; min-height:35px; border: dashed 1px #ccc;">
+            </div>
+        </div>
+        <div style="width:200px; float:left;" class="available-widgets">
             <div class="title">
                 Widgets:
             </div>
             <div class="widgets">
                 <ul>
-                    <li>
-                        <a href="testeWidget" class="widget">Test Widget</a>
-                    </li>
-                    <li>
-                        <a href="testeWidget2" class="widget">Test Widget 2</a>
-                    </li>
                 </ul>
-            </div>
-        </div>
-        <div style="width:720px; float:left;">
-            <div id="widgets-area" style="width: 710px; min-height:35px; border: dashed 1px #ccc;">
             </div>
         </div>
     </body>
