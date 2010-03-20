@@ -31,9 +31,17 @@ var geoIp = {
 }
 
 jQuery.widgets = {
+    tabCounter:0,
     init: function(options){
         _self = this;
         $('.errors').hide();
+
+        $('#widgets-area').tabs({
+            tabTemplate: '<li><a href="#{href}">#{label}</a></li>',
+            add: function(event, ui) {
+                $(ui.panel).append('<div>Loading...</p>');
+            }
+        });
 
         _self.bindAvailableWidgets(options.availableWidgets);
     },
@@ -57,6 +65,7 @@ jQuery.widgets = {
         });
     },
     loadWidget: function(widgetName){
+        var _self = this;
         var htmlUrl = 'widgets/' + widgetName + '.html';
         var jsUrl = 'widgets/' + widgetName + '.js';
 
@@ -67,7 +76,15 @@ jQuery.widgets = {
 
                 $container.append(data);
 
-                $('#widgets-area').append($container);
+                var key = '#tabs-' + _self.tabCounter;
+
+                $('#widgets-area').tabs('add', key, widgetName);
+
+                $('#widgets-area').tabs('select', _self.tabCounter);
+
+                _self.tabCounter++;
+
+                $(key).html($container);
 
                 $.ajax({
                     url: jsUrl,
