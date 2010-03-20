@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+	<title>MemeME - What is happening near to me?</title>
+	<script type="text/javascript">
+	    $.widgets.init({
+		ip: '{{ ip }}',
+		availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}]
+	    });
+	</script>
+    </head>
+    <body>
+
+    </body>
+</html>
