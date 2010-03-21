@@ -86,17 +86,17 @@ jQuery.widgets = {
         var _self = this;
 
         $.each(availableWidgets, function (item)
-        {
-            var widget = this;
+               {
+                   var widget = this;
 
-            /* Time to make the widget template become a jquery object,
-             * replacing the title var and then calling the load widget
-             * to fill the content. */
-            var widgetHtml = widgetTemplate.replace('{{ title }}', widget.name);
-            var $widget = $(widgetHtml);
-            $widget.appendTo($('#widgetsArea'));
-            _self.loadWidget($widget, widget);
-        });
+                   /* Time to make the widget template become a jquery object,
+                    * replacing the title var and then calling the load widget
+                    * to fill the content. */
+                   var widgetHtml = widgetTemplate.replace('{{ title }}', widget.name);
+                   var $widget = $(widgetHtml);
+                   $widget.appendTo($('#widgetsArea'));
+                   _self.loadWidget($widget, widget);
+               });
     },
 
     loadWidget: function (jElement, widgetObj) {
@@ -108,6 +108,8 @@ jQuery.widgets = {
             success: function (data) {
                 var $container = $('div.content', jElement).html(data);
 
+                console.log("loading js ", widgetObj.js_url)
+
                 /* The plugin html file was loaded success full, it is time
                  * to load its javascript file and execute the plugin
                  * function inside of it. */
@@ -115,8 +117,9 @@ jQuery.widgets = {
                     url: widgetObj.js_url,
                     dataType: 'script',
                     success: function (data) {
+                        console.log("loaded js ", widgetObj.js_url, "(" + widgetObj.slug + ") ", jQuery[widgetObj.slug])
                         var plugin = $[widgetObj.slug];
-                        plugin.add($container, geoIp);
+                        //plugin.add($container, geoIp);
                     }
                 });
             },
@@ -127,6 +130,7 @@ jQuery.widgets = {
                 $('.errors').show();
             }
         });
+
     }
 };
 
