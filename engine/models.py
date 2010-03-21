@@ -39,6 +39,7 @@ class Plugin(object):
             'slug': self.slug,
             'js_url': self.js_url,
             'html_url': self.html_url,
+            'default': self.default,
         }
         return d
 
@@ -46,7 +47,7 @@ class Plugin(object):
         return simplejson.dumps(self.to_dict())
 
     @classmethod
-    def fetch_all(cls, only_defaults=True):
+    def fetch_all(cls):
         plugins = []
         files = glob(os.path.join(settings.PLUGINS_DIRECTORY, "*.cfg"))
         for i in files:
@@ -66,8 +67,6 @@ class Plugin(object):
                 plugin.default = cfg.getboolean('Default', 'default')
             else:
                 plugin.default = False
-
-            if only_defaults and plugin.default:
-                plugins.append(plugin)
+            plugins.append(plugin)
 
         return plugins
