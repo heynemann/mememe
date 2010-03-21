@@ -20,4 +20,8 @@ from engine.models import Plugin
 
 def index(request):
     ip = request.META['REMOTE_ADDR']
-    return render_to_response("index.html", {'ip': ip, 'plugins': Plugin.fetch_all()})
+    context= {
+        'ip': ip,
+        'plugins': Plugin.fetch_all()
+    }
+    return render_to_response("index.html", context)

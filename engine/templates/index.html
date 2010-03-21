@@ -3,6 +3,9 @@
     <title>MemeME - What's happening near me?</title>
        <link type="text/css" href="/media/js/ui/css/smoothness/jquery-ui-1.8rc3.custom.css" rel="stylesheet" />
        <script type="text/javascript" src="/media/js/jquery-1.4.2.min.js"></script>
+       <script type="text/javascript" src="/media/js/jquery.shout.js"></script>
+       <script type="text/javascript" src="/media/js/jquery.embeddata.js"></script>
+       <script type="text/javascript" src="/media/js/jquery.yql.js"></script>
        <script type="text/javascript" src="/media/js/ui/js/jquery-ui-1.8rc3.custom.min.js"></script>
        <script type="text/javascript" src="/media/js/widgets-core.js"></script>
        <script type="text/javascript">
@@ -12,7 +15,7 @@
             });
             $.widgets.init({
                 ip: '{{ ip }}',
-                availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}]
+                availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}]
             });
         });
     </script>
