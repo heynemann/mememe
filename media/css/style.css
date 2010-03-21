@@ -19,7 +19,11 @@
 
 /* Configuring default values for spaceing and list stuff  */
 * { margin: 0; padding: 0; border: 0; list-style: none none; }
-body { margin: 20px 0 0 0; position: relative; overflow: visible; }
+body { margin: 20px 0 0 0; position: relative; overflow: visible;
+    background-image: url(/media/imgs/background.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
 p { margin: 6px 0; }
 a { text-decoration: none; }
 div#top { margin: 0 60px 20px; }
