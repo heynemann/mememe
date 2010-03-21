@@ -10,7 +10,7 @@ jQuery.geoMap = {
             dataType: 'jsonp',
             success: function(data) {
                 $img = $('<div class="map"><img src="' + data.query.results.Result.content + '" /></div><div class="updated">' + data.query.updated + '</div>');
-                $('#my-map', container).append($img);
+                $('.geomap', container).append($img);
             }
         });
     }

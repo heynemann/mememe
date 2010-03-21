@@ -17,12 +17,12 @@ jQuery.lastfm = {
             dataType: 'jsonp',
             success: function(data) {
                 events = data.query.results.lfm.events.event;
-                $('#lastfm ul.eventList', container).html('');
+                $('.lastfm ul.eventList', container).html('');
 
                 $.each(events, function()
                 {
                     var event = this;
-                    var $eventList = $('#lastfm ul.eventList', container);
+                    var $eventList = $('.lastfm ul.eventList', container);
                     var $htmlObj = $(showTemplate).appendTo($eventList);
                     var $ul = $('ul', $htmlObj);
 

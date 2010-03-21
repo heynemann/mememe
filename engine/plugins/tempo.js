@@ -37,8 +37,7 @@ jQuery.tempo = {
                     + '<div style="background: transparent url(http://l.yimg.com/a/i/us/nws/weather/gr/27n.png) repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" class="forecast-icon"/>'
                     + '</div>';
 
-                $('#tempo', container).append(dv);
-
+                $(".tempo",container).append(dv);
             }
         });
     }

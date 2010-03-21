@@ -43,8 +43,9 @@ $(function () {
             {
                 $widgetListContainer.hide();
                 for (var i in allWidgets)
-                    if (widget.name == allWidgets[i].name)
+                    if (widget.name == allWidgets[i].name) {
                         $.widgets.bindWidgets([widget]);
+                    }
             });
         });
 

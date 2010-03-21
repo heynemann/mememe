@@ -95,6 +95,7 @@ jQuery.widgets = {
         $.each(_self.addonsToLoad, function(index){
             this(containers[index], _self.geoIp);
         });
+        _self.addonsToLoad = [];
     },
 
     loadWidget: function (jElement, widgetObj) {

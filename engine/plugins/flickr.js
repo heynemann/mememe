@@ -14,6 +14,7 @@ jQuery.flickr = {
             dataType: 'jsonp',
 
             success: function(data) {
+
                 var ul = $("<ul />");
                 $.each(data.results, function() {
                     var d = $(String(this));
@@ -37,8 +38,8 @@ jQuery.flickr = {
                     ul.append(li);
                 });
 
-                $('#flickr', container).append(ul);
-                $('#flickr a').lightBox();
+                $(".flickr", container).append(ul);
+                $(".flickr", container).lightBox();
             }
         });
     }
