@@ -30,6 +30,7 @@ class Plugin(object):
     js_url = None
     html_url = None
     slug = None
+    default = False
 
     def to_dict(self):
         d = {
@@ -38,6 +39,7 @@ class Plugin(object):
             'slug': self.slug,
             'js_url': self.js_url,
             'html_url': self.html_url,
+            'default': self.default,
         }
         return d
 
@@ -60,6 +62,11 @@ class Plugin(object):
                                     kwargs={'path': '%s.js' % fname})
             plugin.html_url = reverse('plugins-url',
                                       kwargs={'path': '%s.html' % fname})
+
+            if cfg.has_option('Default', 'default'):
+                plugin.default = cfg.getboolean('Default', 'default')
+            else:
+                plugin.default = False
             plugins.append(plugin)
 
         return plugins

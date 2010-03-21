@@ -1,39 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
+  <head>
     <title>MemeME - What's happening near me?</title>
-       <link type="text/css" href="/media/js/ui/css/smoothness/jquery-ui-1.8rc3.custom.css" rel="stylesheet" />
-       <script type="text/javascript" src="/media/js/jquery-1.4.2.min.js"></script>
-       <script type="text/javascript" src="/media/js/jquery.shout.js"></script>
-       <script type="text/javascript" src="/media/js/jquery.embeddata.js"></script>
-       <script type="text/javascript" src="/media/js/jquery.yql.js"></script>
-       <script type="text/javascript" src="/media/js/ui/js/jquery-ui-1.8rc3.custom.min.js"></script>
-       <script type="text/javascript" src="/media/js/widgets-core.js"></script>
-       <script type="text/javascript">
-        $(function() {
-            $("#accordion").accordion({
-                collapsible: true
-            });
-            $.widgets.init({
-                ip: '{{ ip }}',
-                availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}]
-            });
-        });
+    <!-- Dependency css -->
+    <link type="text/css" rel="stylesheet"
+          href="/media/js/lightbox/css/jquery.lightbox-0.5.css" />
+    <link type="text/css" rel="stylesheet"
+          href="/media/js/ui/css/smoothness/jquery-ui-1.8rc3.custom.css" />
+
+    <!-- Our css -->
+    <link type="text/css" rel="stylesheet" href="/media/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/media/css/plugins.css"/>
+
+    <!-- Dependency scripts -->
+    <script type="text/javascript"
+            src="/media/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript"
+            src="/media/js/ui/js/jquery-ui-1.8rc3.custom.min.js"></script>
+    <script type="text/javascript"
+            src="/media/js/jquery.map_util.js"></script>
+    <script type="text/javascript"
+            src="/media/js/jquery.enter.js"></script>
+    <script type="text/javascript"
+            src="/media/js/lightbox/js/jquery.lightbox-0.5.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.enter.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.map_util.js"></script>
+    <script type="text/javascript" src="/media/js/jquery.yql.js"></script>
+
+    <!-- Our scripts -->
+    <script type="text/javascript" src="/media/js/widgets-core.js"></script>
+    <script type="text/javascript" src="/media/js/addwidget.js"></script>
+
+    <script type="text/javascript">
+      var allWidgets = [{% for plugin in plugins %}
+          {{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}
+          {% endfor %}];
+
+      $(function() {
+          var ipAddr = "200.159.32.100"; /* {{ ip }} */
+          $.yql("SELECT * FROM ip.location WHERE ip = '#{ip}'", {ip: ipAddr},
+              function (data) {
+                  $.widgets.init({
+                      geoIp: data,
+                      availableWidgets: allWidgets,
+                      pluginsToLoad: []
+                  });
+              });
+      });
     </script>
-    </head>
-    <body>
-      <div class="errors"></div>
+  </head>
+  <body>
 
-      <div id="widgets-area">
-        <ul></ul>
-      </div>
+    <div id="top">
+      <h1 class="logo"><a href="{% url index %}">mememe</a></h1>
+      <ul id="toolbar">
+        <li><a href="#">Change location info</a></li>
+        <li>
+          <a href="javascript:;" id="addWidgetLink">Add widget</a>
+        </li>
+      </ul>
+      <div class="errors roundCorners">It is a test</div>
+    </div>
 
-      <div class="demos-nav">
-        <h4>Widgets</h4>
-        <div class="available-widgets">
-          <div class="widgets">
-            <ul></ul>
-          </div>
-        </div>
-      </div>
-    </body>
+    <div id="container">
+      <ul id="widgetsArea"></ul>
+    </div>
+
+    <br class="clear" />
+
+    <div id="footer">
+      <ul class="authors">
+        <li></li>
+      </ul>
+    </div>
+
+    <div id="widgetsToAdd"></div>
+  </body>
 </html>

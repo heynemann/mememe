@@ -1,0 +1,123 @@
+/*
+ * plugins.css - this file is part of the 'mememe' project
+ *
+ * Copyright (C) 2010  Lincoln de Sousa <lincoln@comum.org>
+ * Copyright (C) 2010  Thiago Silva <tsilva@sourcecraft.info>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**** lastfm ****/
+
+ul.eventList li div.imgContainer {
+    display: table-column;
+    float: left;
+    margin-right: 10px;
+    min-width: 65px;
+}
+
+ul.eventList li {
+    padding: 2px 0;
+}
+
+ul.eventList li label {
+    display: block;
+    float: left;
+    width: 80px;
+    font-weight: bold;
+    color: #000;
+}
+
+ul.eventList li ul {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#widgetsArea ul.eventList li {
+    display: block;
+    width: auto;
+    float: none;
+}
+
+/**** weather ****/
+
+div.night {
+    position:relative;
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#DFDDE2 url(http://l.yimg.com/a/i/us/nws/weather/crntcondbg_night.gif) repeat scroll 0 0;
+    border-color:#8E8E8E -moz-use-text-color;
+    border-style:solid none;
+    border-width:1px medium;
+}
+
+div.forecast-temp {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:transparent url(http://l.yimg.com/a/i/us/nws/weather/wdgt_night.png) no-repeat scroll 0 0;
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    /*background:transparent url(http://l.yimg.com/a/i/us/nws/weather/wdgt_day.png) no-repeat scroll 0 0;*/
+    min-width:200px;
+    position:absolute;
+    right:20px;
+    top:45px;
+    width:15.3846em;
+    z-index:0;
+}
+
+div.yw-temp {
+    color:#FFFFFF;
+    float:right;
+    font-size:260%;
+    font-weight:bold;
+    padding:5px 15px 2px 0;
+    text-shadow:0 -1px 1px #315895;
+}
+
+div.forecast-icon {
+    background-repeat:no-repeat;
+    height:130px;
+    left:180px;
+    position:absolute;
+    top:0;
+    width:250px;
+}
+
+p.fore-highlow {
+    clear:right;
+    color:#FFFFFF;
+    font-size:85%;
+    padding-right:17px;
+    text-align:right;
+    text-shadow:0 -1px 1px #315895;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:1.231;
+}
+
+#yw-forecast dt {
+    float:left;
+    min-width:70px;
+    width:11em;
+}
+
+#yw-forecast dd {
+    margin-bottom:2px;
+    z-index:2;
+}
