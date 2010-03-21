@@ -43,6 +43,7 @@ class ModelTests(TestCase):
         assert_equals(plugins[0].name, "Test plugin")
         assert_equals(plugins[0].description, "My first test plugin")
         assert_equals(plugins[0].slug, "test")
+        assert_equals(plugins[0].default, True)
         assert_equals(plugins[0].js_url,
                       reverse('plugins-url', kwargs={'path': 'test.js'}))
         assert_equals(plugins[0].html_url,
@@ -60,6 +61,7 @@ class ModelTests(TestCase):
             'slug': 'test',
             'js_url': reverse('plugins-url', kwargs={'path': 'test.js'}),
             'html_url': reverse('plugins-url', kwargs={'path': 'test.html'}),
+            'default': True,
         }
         assert_equals(plugin.to_dict(), my_dict)
 
@@ -75,6 +77,7 @@ class ModelTests(TestCase):
             'slug': 'test',
             'js_url': reverse('plugins-url', kwargs={'path': 'test.js'}),
             'html_url': reverse('plugins-url', kwargs={'path': 'test.html'}),
+            'default': True,
         })
         assert_equals(plugin.to_json(), my_json)
 

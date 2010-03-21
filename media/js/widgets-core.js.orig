@@ -91,12 +91,15 @@ jQuery.widgets = {
                {
                    var widget = this;
 
+<<<<<<< Updated upstream:media/js/widgets-core.js
             /* We should not load available widgets that are not
              * default in the main page. User will need to add it with
              * the `Add widget' button. */
             if (!widget['default'])
                 return;
 
+=======
+>>>>>>> Stashed changes:media/js/widgets-core.js
             /* Time to make the widget template become a jquery object,
              * replacing the title var and then calling the load widget
              * to fill the content. */
@@ -104,11 +107,14 @@ jQuery.widgets = {
             var $widget = $(widgetHtml);
             $widget.appendTo($('#widgetsArea'));
             _self.loadWidget($widget, widget);
+<<<<<<< Updated upstream:media/js/widgets-core.js
+=======
             containers.push($widget);
         });
 
         $.each(_self.addonsToLoad, function(index){
             this(containers[index], geoIp);
+>>>>>>> Stashed changes:media/js/widgets-core.js
         });
     },
 
