@@ -79,7 +79,7 @@ h1.logo a { display: block; padding-top: 160px; }
 #widgetsArea li { display: block; float: left; width: 570px; }
 
 .widget { background: #fff; border: solid 1px #ad7fa8; color: #333;
-          margin: 0 20px 20px 0; -moz-border-radius: 4px;
+          margin: 5px; -moz-border-radius: 4px;
           -webkit-border-radius: 4px; border-radius: 4px; }
 
 .widget .title { float: left; }
