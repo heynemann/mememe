@@ -38,7 +38,7 @@
           {% endfor %}];
 
       $(function() {
-          var ipAddr = "200.159.32.100"; /* {{ ip }} */
+          var ipAddr = "{{ ip }}";
           $('#globalLoading').fadeIn();
           $.yql("SELECT * FROM ip.location WHERE ip = #{ip}", {ip: ipAddr},
               function (data) {
