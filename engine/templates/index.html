@@ -22,7 +22,7 @@
             $.widgets.init({
                 ip: '{{ ip }}',
                 availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}],
-                pluginsToLoad: ['lastfm']
+                pluginsToLoad: null
             });
         });
     </script>
