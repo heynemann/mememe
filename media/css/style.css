@@ -1,0 +1,74 @@
+/*
+ * style.css - this file is part of the 'mememe' project
+ *
+ * Copyright (C) 2010  Lincoln de Sousa <lincoln@comum.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* Configuring default values for spaceing and list stuff  */
+* { margin: 0; padding: 0; border: 0; list-style: none none; }
+body { margin: 20px 0; position: relative; overflow: visible; }
+p { margin: 6px 0; }
+a { text-decoration: none; }
+div#top { margin: 0 60px 20px; }
+div#container { margin: 0 60px; padding-bottom: 60px; }
+
+/* Main font configuration */
+body { font: normal 10pt sans-serif; }
+
+/* General classes */
+.clear { clear: both; }
+.roundCorners { -moz-border-radius: 4px; -webkit-border-radius: 4px;
+                border-radius: 4px; }
+
+/* Main logo appearance */
+h1.logo { background: url(../imgs/logo.png) no-repeat; width: 160px;
+          height: 115px; overflow: hidden; }
+h1.logo a { display: block; padding-top: 160px; }
+
+/* Top div appearance */
+div#top { border-bottom: solid 2px #babdb6; }
+
+/* Error style */
+.errors { display: none; margin: 10px 0; padding: 8px 8px 8px 34px;
+          border: solid 1px #c4a000; color: #2e3436;
+          background: url(../imgs/warn.png) no-repeat #fce94f 4px 50%; }
+
+/* Toolbar styles */
+#toolbar { margin-bottom: 10px; padding-bottom: 10px;
+          text-align: right; }
+#toolbar li { display: inline; margin-right: 4px; padding: 4px 8px;
+              color: #888a85; }
+#toolbar li a { color: #888a85; }
+#toolbar li a:hover { background: #ad7fa8; color: #fff; }
+
+/* Widgets container */
+#widgetsArea li { display: block; float: left; width: 380px; }
+
+.widget { border: solid 1px #ad7fa8; -moz-border-radius: 4px;
+          -webkit-border-radius: 4px; border-radius: 4px; color: #5c3566;
+          margin: 0 20px 20px 0; }
+
+.widget .title { float: left; }
+.widget .header { color: #5c3566; margin: 6px 6px 0 6px;
+                  padding-bottom: 6px; border-bottom: solid 1px #888a85; }
+.widget .controls { float: right; width: 100px; text-align: right; }
+#widgetsArea .widget .controls li { display: inline; float: none;
+                                    width: auto; }
+.widget .content { padding: 6px; }
+
+/* Footer appearance */
+#footer { margin-top: 20px; background: #ad7fa8;
+          height: 60px; border-top: solid 2px #babdb6; text-align: right; }
