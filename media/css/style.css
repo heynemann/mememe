@@ -36,7 +36,7 @@ body { font: normal 10pt sans-serif; }
 .clear { clear: both; }
 .roundCorners { -moz-border-radius: 4px; -webkit-border-radius: 4px;
                 border-radius: 4px; }
-.odd {}
+.odd { background: #fff; }
 .even { background: #efefef; }
 
 /* Main logo appearance */
@@ -78,7 +78,7 @@ h1.logo a { display: block; padding-top: 160px; }
 /* Widgets container */
 #widgetsArea li { display: block; float: left; width: 570px; }
 
-.widget { border: solid 1px #ad7fa8; color: #333;
+.widget { background: #fff; border: solid 1px #ad7fa8; color: #333;
           margin: 0 20px 20px 0; -moz-border-radius: 4px;
           -webkit-border-radius: 4px; border-radius: 4px; }
 
