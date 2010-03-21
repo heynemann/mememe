@@ -3,7 +3,8 @@ jQuery.policia = {
         $(this).maps_search($(".policia", container), 
                             "policia", 
                             geoData.query.results.Response.Latitude, 
-                            geoData.query.results.Response.Longitude);
+                            geoData.query.results.Response.Longitude,
+                            15);
     }
 }
 

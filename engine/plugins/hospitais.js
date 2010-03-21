@@ -4,7 +4,8 @@ jQuery.hospitais = {
         $(this).maps_search($(".hospitais", container), 
                             "hospitais", 
                             geoData.query.results.Response.Latitude, 
-                            geoData.query.results.Response.Longitude);
+                            geoData.query.results.Response.Longitude,
+                            15);
     }
 }
 
