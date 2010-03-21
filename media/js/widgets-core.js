@@ -54,15 +54,31 @@ jQuery.widgets = {
     addonsToLoad:[],
     init: function (options)
     {
-        this.bindAvailableWidgets(options.availableWidgets, options.pluginsToLoad);
+        var widgets = [];
+        var pluginsToLoad = options.pluginsToLoad;
+
+        /* We should not load available widgets that are not default
+         * in the main page. User will need to add it with the `Add
+         * widget' button. */
+        $.each(options.availableWidgets, function ()
+        {
+            var widget = this;
+            if (!pluginsToLoad && !widget['default'])
+                return;
+            if (pluginsToLoad && pluginsToLoad.join().indexOf(widget['slug']) == -1)
+                return;
+            widgets.push(widget);
+        });
+
+        this.bindWidgets(widgets, pluginsToLoad);
     },
 
-    /** Iterates over all available widgets found, build their html,
-     * their js and call the main plugin function that fills the widget
+    /** Iterates over a list of widgets, build their html, their js
+     * and call the main plugin function that fills the widget
      * content. */
-    bindAvailableWidgets: function (availableWidgets, pluginsToLoad)
+    bindWidgets: function (widgetList)
     {
-        /* This is the html that a widget must have. To avoid repeating it
+        /* this is the html that a widget must have. To avoid repeating it
          * or writting a lots of jquery expressions, we're putting it here.
          * The {{ title }} `var' will be replaced in this function, the
          * content div will be filled by the loadWidget() method
@@ -86,17 +102,8 @@ jQuery.widgets = {
 
         var containers = [];
 
-        $.each(availableWidgets, function (item) {
+        $.each(widgetList, function (item) {
             var widget = this;
-
-            /* We should not load available widgets that are not
-             * default in the main page. User will need to add it with
-             * the `Add widget' button. */
-            if (!pluginsToLoad && !widget['default'])
-                return;
-
-            if (pluginsToLoad && pluginsToLoad.join().indexOf(widget['slug']) == -1)
-                return;
 
             /* Time to make the widget template become a jquery object,
              * replacing the title var and then calling the load widget
