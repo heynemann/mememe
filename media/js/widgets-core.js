@@ -80,8 +80,11 @@ jQuery.widgets = {
     loadWidget: function(link){
         var _self = this;
 
+        var htmlUrl = link.attr('html_url');
+        var jsUrl = link.attr('js_url');
+
         $.ajax({
-            url: link.attr('html_url'),
+            url: htmlUrl,
             success: function(data){
                 $tabs = $('#widgets-area');
                 var $container = $('<div class="widget"></div>');
@@ -103,13 +106,16 @@ jQuery.widgets = {
                     _self.tabCounter--;
                 });
 
-
                 $.ajax({
-                    url: link.attr('js_url'),
+                    url: jsUrl,
                     dataType: 'script',
                     success: function(data){
                         var widgetObject = $[link.attr('slug')];
                         widgetObject.add($container, geoIp);
+                    },
+                    error: function(xmlHttp, message, exception){
+                        var tabIndex = $('li',$tabs).index($container);
+                        $tabs.tabs('remove', tabIndex);
                     }
                 });
             },

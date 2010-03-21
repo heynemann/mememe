@@ -1,27 +1,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-	<title>MemeME - What's happening near me?</title>
-       <script type="text/javascript" src="/media/js/jquery.js"></script>
-       <script type="text/javascript" src="/media/js/jquery.ui.js"></script>
+    <title>MemeME - What's happening near me?</title>
+       <link type="text/css" href="/media/js/ui/css/smoothness/jquery-ui-1.8rc3.custom.css" rel="stylesheet" />
+       <script type="text/javascript" src="/media/js/jquery-1.4.2.min.js"></script>
+       <script type="text/javascript" src="/media/js/ui/js/jquery-ui-1.8rc3.custom.min.js"></script>
        <script type="text/javascript" src="/media/js/widgets-core.js"></script>
-       <link type="text/css" href="/media/css/main.css" rel="stylesheet" />
        <script type="text/javascript">
-	    $(function() {
-		$("#accordion").accordion({
-                    collapsible: true
-		});
-		$.widgets.init({
-                    ip: '{{ ip }}',
-		    availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}]
-		});
-	    });
-	</script>
+        $(function() {
+            $("#accordion").accordion({
+                collapsible: true
+            });
+            $.widgets.init({
+                ip: '{{ ip }}',
+                availableWidgets: [{% for plugin in plugins %}{{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}{% endfor %}]
+            });
+        });
+    </script>
     </head>
     <body>
       <div class="errors"></div>
 
-      <div>
-        <ul id="widgets-area"></ul>
+      <div id="widgets-area">
+        <ul></ul>
       </div>
 
       <div class="demos-nav">

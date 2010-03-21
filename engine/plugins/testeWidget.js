@@ -1,5 +1,5 @@
 jQuery.testeWidget = {
-    add:function(container){
-        $('#bla', container).load('widgets/readme.txt');
+    add:function(container, geoIp){
+        $('#bla', container).load('/plugins/readme.txt');
     }
 }
