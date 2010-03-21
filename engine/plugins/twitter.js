@@ -8,9 +8,7 @@ jQuery.twitter = {
             url: url,
             dataType: 'jsonp',
             success: function(data) {
-                x = data
-
-                var tweets = data.results
+                var tweets = data.results;
                 
                 $.each(tweets, function() {
                     var sp1 = "<span class='entry-content'><a href='http://twitter.com/" + this.from_user + "' class='tweet-url profile-pic url'>"
