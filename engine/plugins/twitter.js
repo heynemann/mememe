@@ -1,9 +1,9 @@
 jQuery.twitter = {
-    add: function(container, geoData){
-        var url = "http://search.twitter.com/search.json?geocode=" 
-                      + geoData.query.results.Response.Latitude + ","
-                      + geoData.query.results.Response.Longitude + ",10km"
-
+    add: function (container, geoData)
+    {
+        var url = "http://search.twitter.com/search.json?geocode="
+            + geoData.query.results.Response.Latitude + ","
+            + geoData.query.results.Response.Longitude + ",10km";
 
         var ct = $(".content", container);
 
@@ -12,20 +12,44 @@ jQuery.twitter = {
             dataType: 'jsonp',
             success: function(data) {
                 var tweets = data.results;
-                
-                $.each(tweets, function() {
-                    var sp1 = "<span class='entry-content'><a href='http://twitter.com/" + this.from_user + "' class='tweet-url profile-pic url'>"
-                              + "<img class='photo fn' height='48' src='" + this.profile_image_url + "' width='48'></a></span>"
 
-                    ct.append(sp1)
+                $.each(tweets, function (idx)
+                {
+                    var $li = $('<li>')
+                        .appendTo($('ul', ct));
 
-                    var sp2 = "<span class='status-body'><strong><a href='http://twitter.com/" + this.from_user + "' class='tweet-url screen-name'>"
-                              + this.from_user + "</a></strong>"
-                              + "<span class='entry-content'>" + this.text + "</span>"
+                    if (idx % 2 == 0)
+                        $li.addClass('even');
+                    else
+                        $li.addClass('odd');
 
-                    ct.append(sp2).append("<br>")
-                })
-            },
-        })
-  }
-}
+                    /* Image link */
+                    var $link = $('<a>')
+                        .addClass('twitImage')
+                        .attr('href', 'http://twitter.com/' + this.from_user)
+                        .appendTo($li);
+                    var $img = $('<img/>')
+                        .addClass('photo')
+                        .addClass('fn')
+                        .attr('height', '48')
+                        .attr('width', '48')
+                        .attr('src', this.profile_image_url)
+                        .appendTo($link);
+
+                    /* User link */
+                    $('<a>')
+                        .addClass('twitUser')
+                        .attr('href', 'http://twitter.com/' + this.from_user)
+                        .html(this.from_user)
+                        .appendTo($li);
+
+                    /* Text paragraph */
+                    $('<p>')
+                        .addClass('tuwtText')
+                        .html(this.text)
+                        .appendTo($li);
+                });
+            }
+        });
+    }
+};
