@@ -9,7 +9,12 @@ jQuery.lastfm = {
             url: myIpUrl,
             dataType: 'jsonp',
             success: function(data) {
-                console.debug(data);
+                events = data.query.results.lfm.events.event;
+
+                $.each(events, function(){
+                    var event = this;
+                    console.debug(event);
+                });
             }
         });
     }
