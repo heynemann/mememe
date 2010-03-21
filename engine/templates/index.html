@@ -42,7 +42,14 @@
           $('#globalLoading').fadeIn();
           $.yql("SELECT * FROM ip.location WHERE ip = '#{ip}'", {ip: ipAddr},
               function (data) {
+                  var resp = data.query.results.Response;
+                  $('#locationInfo em.city').html(resp.City);
+                  $('#locationInfo em.state').html(resp.RegionName);
+                  $('#locationInfo em.country').html(resp.CountryName);
+                  $('#locationInfo').show();
+
                   $('#globalLoading').fadeOut();
+
                   $.widgets.init({
                       geoIp: data,
                       availableWidgets: allWidgets,
@@ -57,12 +64,27 @@
     <div id="top">
       <h1 class="logo"><a href="{% url index %}">mememe</a></h1>
       <ul id="toolbar">
-        <li><a href="#">Change location info</a></li>
         <li>
           <a href="javascript:;" id="addWidgetLink">Add widget</a>
         </li>
       </ul>
-      <div class="errors roundCorners">It is a test</div>
+
+      <div id="locationInfo">
+        <h3>Current location <a href="#">(Change)</a></h3>
+        <ul>
+          <li>
+            <strong>City/State:</strong>
+            <em class="city"></em>,
+            <em class="state"></em>
+          </li>
+          <li>
+            <strong>Country:</strong>
+            <em class="country"></em>
+          </li>
+        </ul>
+      </div>
+
+      <div class="errors roundCorners"></div>
     </div>
 
     <div id="container">
