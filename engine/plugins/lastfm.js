@@ -29,6 +29,10 @@ jQuery.lastfm = {
                     if (event.image)
                         $('img', $htmlObj).attr('src', event.image[1].content);
 
+                    if (event.startDate)
+                        $('<li><label>Date:</label>' + event.startDate + '</li>')
+                            .appendTo($ul);
+
                     if (event.artists && event.artists.headliner)
                         $('<li><label>Artist:</label>'+event.artists.headliner+'</li>')
                             .appendTo($ul);
