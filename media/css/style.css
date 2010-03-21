@@ -66,7 +66,7 @@ div#top { border-bottom: solid 2px #babdb6; }
 .widget .controls { float: right; width: 100px; text-align: right; }
 #widgetsArea .widget .controls li { display: inline; float: none;
                                     width: auto; }
-.widget .content { padding: 6px; overflow: auto; max-height: 300px; }
+.widget .content { padding: 6px; overflow: auto; height: 300px; }
 
 /* Footer appearance */
 #footer { margin-top: 20px; background: #ad7fa8;
