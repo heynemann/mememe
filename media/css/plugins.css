@@ -21,11 +21,13 @@
 /**** flick ****/
 
 #widgetsArea .flickr ul li {
-    padding: 2px;
-    width: 90px;
-    height: 120px;
     display: block;
     float: left;
+    height: 100px;
+    margin-bottom: 8px;
+    margin-right: 5px;
+    padding: 6px;
+    width: 72px;
 }
 
 #widgetsArea .flickr ul li img {

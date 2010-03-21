@@ -16,7 +16,7 @@ jQuery.flickr = {
             success: function(data) {
 
                 var ul = $("<ul />");
-                $.each(data.results, function() {
+                $.each(data.results, function (idx) {
                     var d = $(String(this));
 
                     /* Crappy concatenation... how I'd like to se result
@@ -35,6 +35,11 @@ jQuery.flickr = {
                         "' title='"+d.attr("title")+"'><img src='"+thumb+
                         "' width='72' height='72' alt='" + d.attr("title") +
                         "' /></a>" + d.attr("title") + "</li>");
+
+                    if (idx % 2 == 0)
+                        li.addClass('even');
+                    else
+                        li.addClass('odd');
                     ul.append(li);
                 });
 
