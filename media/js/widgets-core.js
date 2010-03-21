@@ -87,9 +87,8 @@ jQuery.widgets = {
 
         var containers = [];
 
-        $.each(availableWidgets, function (item)
-               {
-                   var widget = this;
+        $.each(availableWidgets, function (item) {
+            var widget = this;
 
             /* We should not load available widgets that are not
              * default in the main page. User will need to add it with
@@ -121,8 +120,6 @@ jQuery.widgets = {
             async: false,
             success: function (data) {
                 var $container = $('div.content', jElement).html(data);
-
-                console.log("loading js ", widgetObj.js_url)
 
                 /* The plugin html file was loaded success full, it is time
                  * to load its javascript file and execute the plugin
