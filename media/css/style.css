@@ -52,6 +52,10 @@ div#top { border-bottom: solid 2px #babdb6; }
               color: #888a85; }
 #toolbar li a { color: #888a85; }
 #toolbar li a:hover { background: #ad7fa8; color: #fff; }
+#widgetsToAdd { position: absolute; display: none; background: #ad7fa8; cursor: pointer; }
+#widgetsToAdd ul li { display: block; width: 100%; }
+#widgetsToAdd ul li a { display: block; padding: 6px; }
+#widgetsToAdd ul li a:hover { background: #5c3566; color: #fff; }
 
 /* Widgets container */
 #widgetsArea li { display: block; float: left; width: 570px; }

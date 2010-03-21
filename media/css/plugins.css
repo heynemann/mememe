@@ -1,0 +1,48 @@
+/*
+ * plugins.css - this file is part of the 'mememe' project
+ *
+ * Copyright (C) 2010  Lincoln de Sousa <lincoln@comum.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+ul.eventList li div.imgContainer {
+    display: table-column;
+    float: left;
+    margin-right: 10px;
+    min-width: 65px;
+}
+
+ul.eventList li {
+    padding: 2px 0;
+}
+
+ul.eventList li label {
+    display: block;
+    float: left;
+    width: 80px;
+    font-weight: bold;
+    color: #000;
+}
+
+ul.eventList li ul {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#widgetsArea ul.eventList li {
+    display: block;
+    width: auto;
+    float: none;
+}

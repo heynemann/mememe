@@ -20,38 +20,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var geoIp = {
-    "query":{
-        "count":"1",
-        "created":"2010-03-20T05:33:16Z",
-        "lang":"en-US",
-        "updated":"2010-03-20T05:33:16Z",
-        "uri":"http://query.yahooapis.com/v1/yql?q=select+*+from+ip.location+where+ip%3D%27200.159.32.100%27",
-        "results":{
-            "Response":{
-                "Ip":"200.159.32.100",
-                "Status":"OK",
-                "CountryCode":"BR",
-                "CountryName":"Brazil",
-                "RegionCode":"27",
-                "RegionName":"Sao Paulo",
-                "City":"São Paulo",
-                "ZipPostalCode":null,
-                "Latitude":"-23.5333",
-                "Longitude":"-46.6167",
-                "Timezone":"-3",
-                "Gmtoffset":"-2",
-                "Dstoffset":"-3"
-            }
-        }
-    }
-};
-
-//Para obter mais informacões geográficas
-//http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20google.geocoding%20where%20q%3D%22-23.5333%2C-46.6167%22&format=json&diagnostics=false&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=cbfunc
-
 jQuery.widgets = {
-    addonsToLoad:[],
+
+    addonsToLoad: [],
+
+    geoIp: null,
+
     init: function (options)
     {
         var widgets = [];
@@ -69,6 +43,8 @@ jQuery.widgets = {
                 return;
             widgets.push(widget);
         });
+
+        this.geoIp = options.geoIp;
 
         this.bindWidgets(widgets, pluginsToLoad);
     },
@@ -117,7 +93,7 @@ jQuery.widgets = {
         });
 
         $.each(_self.addonsToLoad, function(index){
-            this(containers[index], geoIp);
+            this(containers[index], _self.geoIp);
         });
     },
 
