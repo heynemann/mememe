@@ -20,7 +20,7 @@
 
 /**** flick ****/
 
-#widgetsArea #flickr ul li {
+#widgetsArea .flickr ul li {
     padding: 2px;
     width: 90px;
     height: 120px;
@@ -28,7 +28,7 @@
     float: left;
 }
 
-#widgetsArea #flickr ul li img {
+#widgetsArea .flickr ul li img {
     display: block;
 }
 
