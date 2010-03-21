@@ -40,7 +40,7 @@
       $(function() {
           var ipAddr = "200.159.32.100"; /* {{ ip }} */
           $('#globalLoading').fadeIn();
-          $.yql("SELECT * FROM ip.location WHERE ip = '#{ip}'", {ip: ipAddr},
+          $.yql("SELECT * FROM ip.location WHERE ip = #{ip}", {ip: ipAddr},
               function (data) {
                   var resp = data.query.results.Response;
                   $('#locationInfo em.city').html(resp.City);
