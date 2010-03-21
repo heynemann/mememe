@@ -57,6 +57,10 @@ div#top { border-bottom: solid 2px #babdb6; }
 #widgetsToAdd ul li a { display: block; padding: 6px; }
 #widgetsToAdd ul li a:hover { background: #5c3566; color: #fff; }
 
+/* Loading image */
+#globalLoading { position:fixed; top: 50%; left: 50%; margin: -60px 0 0 -154px;
+                 display: none; background: #f7f7f7; opacity: 0.7; padding: 50px; }
+
 /* Widgets container */
 #widgetsArea li { display: block; float: left; width: 570px; }
 

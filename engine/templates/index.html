@@ -39,8 +39,10 @@
 
       $(function() {
           var ipAddr = "200.159.32.100"; /* {{ ip }} */
+          $('#globalLoading').fadeIn();
           $.yql("SELECT * FROM ip.location WHERE ip = '#{ip}'", {ip: ipAddr},
               function (data) {
+                  $('#globalLoading').fadeOut();
                   $.widgets.init({
                       geoIp: data,
                       availableWidgets: allWidgets,
@@ -76,5 +78,9 @@
     </div>
 
     <div id="widgetsToAdd"></div>
+    <div id="globalLoading">
+      <div>Loading...</div>
+      <img src="/media/imgs/loading.gif" alt="Loading" />
+    </div>
   </body>
 </html>
