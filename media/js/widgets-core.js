@@ -89,6 +89,12 @@ jQuery.widgets = {
         {
             var widget = this;
 
+            /* We should not load available widgets that are not
+             * default in the main page. User will need to add it with
+             * the `Add widget' button. */
+            if (!widget['default'])
+                return;
+
             /* Time to make the widget template become a jquery object,
              * replacing the title var and then calling the load widget
              * to fill the content. */
