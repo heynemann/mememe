@@ -20,16 +20,35 @@
 
 /**** flick ****/
 
-#widgetsArea #flickr ul li {
-    padding: 2px;
-    width: 90px;
-    height: 120px;
+#widgetsArea .flickr ul li {
     display: block;
     float: left;
+    height: 100px;
+    margin-bottom: 8px;
+    margin-right: 5px;
+    padding: 6px;
+    width: 72px;
 }
 
-#widgetsArea #flickr ul li img {
+#widgetsArea .flickr ul li img {
     display: block;
+}
+
+/**** twitter ****/
+
+#widgetsArea .twitter ul li {
+    display: block;
+    float: left;
+    margin: 5px 0 0;
+    width: 100%;
+}
+
+li .twitImage {
+    display: block;
+    float: left;
+    width: 50px;
+    height: 48px;
+    padding: 6px;
 }
 
 /**** lastfm ****/
@@ -39,6 +58,7 @@ ul.eventList li div.imgContainer {
     float: left;
     margin-right: 10px;
     min-width: 65px;
+    padding: 6px;
 }
 
 ul.eventList li {
