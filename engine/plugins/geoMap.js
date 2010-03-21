@@ -7,7 +7,6 @@ jQuery.geoMap = {
                 longitude: geoData.query.results.Response.Longitude,
             },
             function (data) {
-                alert("OK")
                 $img = $('<div class="map"><img src="' + data.query.results.Result.content + '" /></div><div class="updated">' + data.query.updated + '</div>');
                 $('.geomap', container).append($img);
             });
