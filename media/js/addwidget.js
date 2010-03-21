@@ -26,11 +26,14 @@ $(function () {
         $('#addWidgetLink').css('background-color', '');
     });
 
+      $('#addWidgetLink').blur(function (event){
+        $('#addWidgetLink').find("img").attr("src", "/media/imgs/add.png")
+                               });
     $('#addWidgetLink').click(function (event)
     {
         $widgetListContainer.html('');
         $('#addWidgetLink').css('background-color', '#592c71');
-
+        $('#addWidgetLink').find("img").attr("src", "/media/imgs/add-over.png")
         var $ul = $('<ul>').appendTo($widgetListContainer);
         $.each(allWidgets, function ()
         {
