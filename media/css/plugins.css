@@ -18,6 +18,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**** flick ****/
+
+#widgetsArea #flickr ul li {
+    padding: 2px;
+    width: 90px;
+    height: 120px;
+    display: block;
+    float: left;
+}
+
+#widgetsArea #flickr ul li img {
+    display: block;
+}
+
 /**** lastfm ****/
 
 ul.eventList li div.imgContainer {
