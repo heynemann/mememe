@@ -73,8 +73,7 @@ jQuery.widgets = {
             '    <div class="header">' +
             '      <strong>{{ title }}</strong>' +
             '      <ul class="controls">' +
-            '        <li class="stick"><a href="javascript:;">stick</a></li>' +
-            '        <li class="close"><a href="javascript:;">close</a></li>' +
+            '        <li class="remove"><a href="javascript:;">remove</a></li>' +
             '      </ul>' +
             '      <br class="clear" />' +
             '    </div>' +
@@ -102,6 +101,7 @@ jQuery.widgets = {
             var widgetHtml = widgetTemplate.replace('{{ title }}', widget.name);
             var $widget = $(widgetHtml);
             $widget.appendTo($('#widgetsArea'));
+            $('li.remove a', $widget).click(function(){$widget.remove();});
             _self.loadWidget($widget, widget);
             containers.push($widget);
         });
