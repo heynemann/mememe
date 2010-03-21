@@ -36,7 +36,7 @@ body { font: normal 10pt sans-serif; }
 .clear { clear: both; }
 .roundCorners { -moz-border-radius: 4px; -webkit-border-radius: 4px;
                 border-radius: 4px; }
-.odd {}
+.odd { background: #fff; }
 .even { background: #efefef; }
 
 /* Main logo appearance */
@@ -78,7 +78,7 @@ h1.logo a { display: block; padding-top: 160px; }
 /* Widgets container */
 #widgetsArea li { display: block; float: left; width: 570px; }
 
-.widget { border: solid 1px #ad7fa8; color: #333;
+.widget { background: #fff; border: solid 1px #ad7fa8; color: #333;
           margin: 0 20px 20px 0; -moz-border-radius: 4px;
           -webkit-border-radius: 4px; border-radius: 4px; }
 
@@ -91,5 +91,9 @@ h1.logo a { display: block; padding-top: 160px; }
 .widget .content { padding: 6px; overflow: auto; height: 300px; }
 
 /* Footer appearance */
-#footer { margin-top: 20px; background: #ad7fa8;
-          height: 60px; border-top: solid 2px #babdb6; text-align: right; }
+#footer { margin-top: 20px; background: #ad7fa8; padding: 10px 10px 10px 60px;
+          min-height: 60px; border-top: solid 2px #babdb6; text-align: left; }
+#footer h4 { margin: 8px 0; }
+#footer ul { padding-left: 30px; }
+#footer ul li { list-style-type: disc; }
+#footer p { padding-left: 20px; }
