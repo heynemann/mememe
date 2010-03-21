@@ -58,6 +58,7 @@ ul.eventList li div.imgContainer {
     float: left;
     margin-right: 10px;
     min-width: 65px;
+    padding: 6px;
 }
 
 ul.eventList li {

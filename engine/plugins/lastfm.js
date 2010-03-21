@@ -19,11 +19,17 @@ jQuery.lastfm = {
                 events = data.query.results.lfm.events.event;
                 $('.lastfm ul.eventList', container).html('');
 
-                $.each(events, function()
+                $.each(events, function (idx)
                 {
                     var event = this;
                     var $eventList = $('.lastfm ul.eventList', container);
                     var $htmlObj = $(showTemplate).appendTo($eventList);
+
+                    if (idx % 2 == 0)
+                        $htmlObj.addClass('even');
+                    else
+                        $htmlObj.addClass('odd');
+
                     var $ul = $('ul', $htmlObj);
 
                     if (event.image)
