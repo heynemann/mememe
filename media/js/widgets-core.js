@@ -54,13 +54,13 @@ jQuery.widgets = {
     addonsToLoad:[],
     init: function (options)
     {
-        this.bindAvailableWidgets(options.availableWidgets);
+        this.bindAvailableWidgets(options.availableWidgets, options.pluginsToLoad);
     },
 
     /** Iterates over all available widgets found, build their html,
      * their js and call the main plugin function that fills the widget
      * content. */
-    bindAvailableWidgets: function (availableWidgets)
+    bindAvailableWidgets: function (availableWidgets, pluginsToLoad)
     {
         /* This is the html that a widget must have. To avoid repeating it
          * or writting a lots of jquery expressions, we're putting it here.
@@ -92,7 +92,10 @@ jQuery.widgets = {
             /* We should not load available widgets that are not
              * default in the main page. User will need to add it with
              * the `Add widget' button. */
-            if (!widget['default'])
+            if (!pluginsToLoad && !widget['default'])
+                return;
+
+            if (pluginsToLoad && pluginsToLoad.join().indexOf(widget['slug']) == -1)
                 return;
 
             /* Time to make the widget template become a jquery object,

@@ -1,10 +1,11 @@
-jQuery.policia = {
+
+jQuery.satelite = {
     add: function(container, geoData) {
-        $(this).maps_search($(".policia", container), 
-                            "policia", 
+        $(this).maps_search($(".satelite", container), 
+                            "", 
                             geoData.query.results.Response.Latitude, 
                             geoData.query.results.Response.Longitude,
-                            15);
+                            19, true);
     }
 }
 
