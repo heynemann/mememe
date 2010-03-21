@@ -71,3 +71,80 @@ div#top { border-bottom: solid 2px #babdb6; }
 /* Footer appearance */
 #footer { margin-top: 20px; background: #ad7fa8;
           height: 60px; border-top: solid 2px #babdb6; text-align: right; }
+
+
+
+
+
+/**** weather ****/
+
+
+div.night {
+    position:relative;
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#DFDDE2 url(http://l.yimg.com/a/i/us/nws/weather/crntcondbg_night.gif) repeat scroll 0 0;
+    border-color:#8E8E8E -moz-use-text-color;
+    border-style:solid none;
+    border-width:1px medium;
+}
+
+div.forecast-temp {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:transparent url(http://l.yimg.com/a/i/us/nws/weather/wdgt_night.png) no-repeat scroll 0 0;
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    /*background:transparent url(http://l.yimg.com/a/i/us/nws/weather/wdgt_day.png) no-repeat scroll 0 0;*/
+    min-width:200px;
+    position:absolute;
+    right:20px;
+    top:45px;
+    width:15.3846em;
+    z-index:0;
+}
+
+div.yw-temp {
+    color:#FFFFFF;
+    float:right;
+    font-size:260%;
+    font-weight:bold;
+    padding:5px 15px 2px 0;
+    text-shadow:0 -1px 1px #315895;
+}
+
+div.forecast-icon {
+    background-repeat:no-repeat;
+    height:130px;
+    left:180px;
+    position:absolute;
+    top:0;
+    width:250px;
+}
+
+p.fore-highlow {
+    clear:right;
+    color:#FFFFFF;
+    font-size:85%;
+    padding-right:17px;
+    text-align:right;
+    text-shadow:0 -1px 1px #315895;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:1.231;
+}
+
+#yw-forecast dt {
+    float:left;
+    min-width:70px;
+    width:11em;
+}
+
+#yw-forecast dd {
+    margin-bottom:2px;
+    z-index:2;
+}
