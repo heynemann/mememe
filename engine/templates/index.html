@@ -33,7 +33,7 @@
     <script type="text/javascript" src="/media/js/addwidget.js"></script>
 
     <script type="text/javascript">
-      var allWidgets = [{% for plugin in plugins %}
+      allWidgets = [{% for plugin in plugins %}
           {{ plugin.to_json|safe }} {% if not forloop.last %},{% endif %}
           {% endfor %}];
 

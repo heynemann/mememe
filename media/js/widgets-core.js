@@ -46,13 +46,13 @@ jQuery.widgets = {
 
         this.geoIp = options.geoIp;
 
-        this.bindWidgets(widgets, pluginsToLoad);
+        this.bindWidgets(widgets/*, pluginsToLoad*/);
     },
 
     /** Iterates over a list of widgets, build their html, their js
      * and call the main plugin function that fills the widget
      * content. */
-    bindWidgets: function (widgetList)
+    bindWidgets: function (widgetList, params)
     {
         /* this is the html that a widget must have. To avoid repeating it
          * or writting a lots of jquery expressions, we're putting it here.
@@ -93,7 +93,7 @@ jQuery.widgets = {
         });
 
         $.each(_self.addonsToLoad, function(index){
-            this(containers[index], _self.geoIp);
+            this(containers[index], _self.geoIp, params);
         });
         _self.addonsToLoad = [];
     },
