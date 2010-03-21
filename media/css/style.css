@@ -45,6 +45,10 @@ h1.logo a { display: block; padding-top: 160px; }
           border: solid 1px #c4a000; color: #2e3436;
           background: url(../imgs/warn.png) no-repeat #fce94f 4px 50%; }
 
+.tip { margin: -10px 60px 20px; padding: 8px 8px 8px 34px;
+       border: solid 1px #c4a000; color: #2e3436;
+       background: url(../imgs/warn.png) no-repeat #fce94f 4px 50%; }
+
 /* Toolbar styles */
 #toolbar { margin: 0 0 10px 0; text-align: right; border-top: solid 2px #babdb6;
            padding-top: 10px; }
