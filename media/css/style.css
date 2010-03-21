@@ -35,11 +35,8 @@ body { font: normal 10pt sans-serif; }
 
 /* Main logo appearance */
 h1.logo { background: url(../imgs/logo.png) no-repeat; width: 160px;
-          height: 76px; overflow: hidden; }
+          height: 90px; overflow: hidden; }
 h1.logo a { display: block; padding-top: 160px; }
-
-/* Top div appearance */
-div#top { border-bottom: solid 2px #babdb6; }
 
 /* Error style */
 .errors { display: none; margin: 10px 0; padding: 8px 8px 8px 34px;
@@ -47,15 +44,22 @@ div#top { border-bottom: solid 2px #babdb6; }
           background: url(../imgs/warn.png) no-repeat #fce94f 4px 50%; }
 
 /* Toolbar styles */
-#toolbar { margin: -15px 0 10px 0; text-align: right; }
+#toolbar { margin: 0 0 10px 0; text-align: right; border-top: solid 2px #babdb6;
+           padding-top: 10px; }
 #toolbar li { display: inline; margin-right: 4px; padding: 4px 8px;
               color: #888a85; }
 #toolbar li a { color: #888a85; }
 #toolbar li a:hover { background: #ad7fa8; color: #fff; }
 #widgetsToAdd { position: absolute; display: none; background: #ad7fa8; cursor: pointer; }
-#widgetsToAdd ul li { display: block; width: 100%; }
+#widgetsToAdd ul li { display: block; width: 100%; border-bottom: 1px solid white; }
 #widgetsToAdd ul li a { display: block; padding: 6px; }
 #widgetsToAdd ul li a:hover { background: #5c3566; color: #fff; }
+
+/* Location info */
+#locationInfo { position: absolute; top: 0px; right: 60px; float: right;
+                display: none; }
+#locationInfo h3 { border-bottom: solid 1px #333; margin-bottom: 2px; }
+#locationInfo h3 a { font-size: 10pt; }
 
 /* Loading image */
 #globalLoading { position:fixed; top: 50%; left: 50%; margin: -60px 0 0 -154px;
@@ -64,7 +68,7 @@ div#top { border-bottom: solid 2px #babdb6; }
 /* Widgets container */
 #widgetsArea li { display: block; float: left; width: 570px; }
 
-.widget { border: solid 1px #ad7fa8; color: #5c3566;
+.widget { border: solid 1px #ad7fa8; color: #333;
           margin: 0 20px 20px 0; -moz-border-radius: 4px;
           -webkit-border-radius: 4px; border-radius: 4px; }
 
