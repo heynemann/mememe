@@ -19,7 +19,11 @@
 
 /* Configuring default values for spaceing and list stuff  */
 * { margin: 0; padding: 0; border: 0; list-style: none none; }
-body { margin: 20px 0 0 0; position: relative; overflow: visible; }
+body { margin: 20px 0 0 0; position: relative; overflow: visible;
+    background-image: url(/media/imgs/background.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
 p { margin: 6px 0; }
 a { text-decoration: none; }
 div#top { margin: 0 60px 20px; }
@@ -32,7 +36,7 @@ body { font: normal 10pt sans-serif; }
 .clear { clear: both; }
 .roundCorners { -moz-border-radius: 4px; -webkit-border-radius: 4px;
                 border-radius: 4px; }
-.odd {}
+.odd { background: #fff; }
 .even { background: #efefef; }
 
 /* Main logo appearance */
@@ -45,16 +49,20 @@ h1.logo a { display: block; padding-top: 160px; }
           border: solid 1px #c4a000; color: #2e3436;
           background: url(../imgs/warn.png) no-repeat #fce94f 4px 50%; }
 
+.tip { margin: -10px 60px 20px; padding: 8px 8px 8px 34px;
+       border: solid 1px #c4a000; color: #2e3436;
+       background: url(../imgs/warn.png) no-repeat #fce94f 4px 50%; }
+
 /* Toolbar styles */
-#toolbar { margin: 0 0 10px 0; text-align: right; border-top: solid 2px #babdb6;
-           padding-top: 10px; }
+#toolbar { margin: -40px 0 10px 0; text-align: right; padding-top: 10px; }
 #toolbar li { display: inline; margin-right: 4px; padding: 4px 8px;
               color: #888a85; }
 #toolbar li a { color: #888a85; }
-#toolbar li a:hover { background: #ad7fa8; color: #fff; }
-#widgetsToAdd { position: absolute; display: none; background: #ad7fa8; cursor: pointer; }
+#toolbar li a:hover { /* background: #ad7fa8; color: #fff; */ }
+#widgetsToAdd { position: absolute; display: none; background: #ad7fa8; cursor: pointer;
+                width: 140px; }
 #widgetsToAdd ul li { display: block; width: 100%; border-bottom: 1px solid white; }
-#widgetsToAdd ul li a { display: block; padding: 6px; }
+#widgetsToAdd ul li a { display: block; padding: 6px; height: 20px; }
 #widgetsToAdd ul li a:hover { background: #5c3566; color: #fff; }
 
 /* Location info */
@@ -70,7 +78,7 @@ h1.logo a { display: block; padding-top: 160px; }
 /* Widgets container */
 #widgetsArea li { display: block; float: left; width: 570px; }
 
-.widget { border: solid 1px #ad7fa8; color: #333;
+.widget { background: #fff; border: solid 1px #ad7fa8; color: #333;
           margin: 0 20px 20px 0; -moz-border-radius: 4px;
           -webkit-border-radius: 4px; border-radius: 4px; }
 
@@ -83,5 +91,9 @@ h1.logo a { display: block; padding-top: 160px; }
 .widget .content { padding: 6px; overflow: auto; height: 300px; }
 
 /* Footer appearance */
-#footer { margin-top: 20px; background: #ad7fa8;
-          height: 60px; border-top: solid 2px #babdb6; text-align: right; }
+#footer { margin-top: 20px; background: #ad7fa8; padding: 10px 10px 10px 60px;
+          min-height: 60px; border-top: solid 2px #babdb6; text-align: left; }
+#footer h4 { margin: 8px 0; }
+#footer ul { padding-left: 30px; }
+#footer ul li { list-style-type: disc; }
+#footer p { padding-left: 20px; }

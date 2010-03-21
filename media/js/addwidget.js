@@ -23,11 +23,14 @@ $(function () {
     $('body').click(function ()
     {
         $widgetListContainer.fadeOut();
+        $('#addWidgetLink').css('background-color', '');
     });
 
     $('#addWidgetLink').click(function (event)
     {
         $widgetListContainer.html('');
+        $('#addWidgetLink').css('background-color', '#592c71');
+
         var $ul = $('<ul>').appendTo($widgetListContainer);
         $.each(allWidgets, function ()
         {

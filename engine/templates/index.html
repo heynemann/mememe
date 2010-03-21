@@ -53,7 +53,7 @@
                   $.widgets.init({
                       geoIp: data,
                       availableWidgets: allWidgets,
-                      pluginsToLoad: []
+                      pluginsToLoad: ['twitter', 'lastfm']
                   });
               });
       });
@@ -62,10 +62,10 @@
   <body>
 
     <div id="top">
-      <h1 class="logo"><a href="{% url index %}">mememe</a></h1>
+      <a href="{% url index %}"><img src="/media/imgs/logo.png" /></a>
       <ul id="toolbar">
         <li>
-          <a href="javascript:;" id="addWidgetLink">Add widget</a>
+          <a href="javascript:;" id="addWidgetLink"><img src="/media/imgs/add.png" class="" alt="" /></a>
         </li>
       </ul>
 
@@ -87,6 +87,11 @@
       <div class="errors roundCorners"></div>
     </div>
 
+    <div class="tip roundCorners">
+      let me show you what is happening near you. Use the <strong>Add
+      widget</strong> button to choose what you want to see.
+    </div>
+
     <div id="container">
       <ul id="widgetsArea"></ul>
     </div>
@@ -94,8 +99,16 @@
     <br class="clear" />
 
     <div id="footer">
-      <ul class="authors">
-        <li></li>
+      <h4>Help rescuing puppies</h4>
+      <p>One puppy will be saved for every widget you add :D</p>
+
+      <h4>
+        This software is free! You can download with the following
+        commands:
+      </h4>
+      <ul>
+        <li>git clone http://github.com/heynemann/mememe.git</li>
+        <li>git clone http://git.comum.org/lincoln/mememe.git</li>
       </ul>
     </div>
 

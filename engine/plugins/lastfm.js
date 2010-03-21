@@ -4,7 +4,6 @@ var showTemplate =
     '  <ul></ul>' +
     '</li>';
 
-
 jQuery.lastfm = {
     add:function(container, geoData){
         var url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20lastfm.geo.getevents%20where%20api_key%3D%225141317b1b9c2d30fa50ccebcd2d96a2%22%20and%20lat%3D%22{{latitude}}%22%20and%20long%3D%22{{longitude}}%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=?";
@@ -60,19 +59,20 @@ jQuery.lastfm = {
                     }
 
                     if (event.venue.location.street) {
-                        // var street = event.venue.location.street;
-                        // var country = event.venue.location.country;
                         var dlat = event.venue.location.point.lat;
                         var dlon = event.venue.location.point.long;
-                        xx = event.venue.location
-                        $('<li><label>Location:</label>'
-                          + event.venue.location.street
-                          +'</li>').click(function() {
+                        var $li = $('<li><a href="javascript:;"><label>Location:</label>'
+                          + event.venue.location.street + '</a></li>');
+                        $('a', $li).click(function() {
                               for (var i in allWidgets) {
                                   if (allWidgets[i].slug == 'mapaevento') {
-                                      $.widgets.bindWidgets([allWidgets[i]], [event.title,"saddr="+lat+","+lon+"&daddr="+dlat+","+dlon]);
+                                      $.widgets.bindWidgets([allWidgets[i]],
+                                                            [event.title,
+                                                             "saddr="+lat+","+
+                                                             lon+"&daddr="+dlat
+                                                             +","+dlon]);
                                   }
-                              }                              
+                              }
                           })
                             .appendTo($ul);
                     }
